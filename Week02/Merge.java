@@ -1,9 +1,13 @@
 package Week02;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Merge {
-        static int[] sorted = new int[8];
+        static int[] sorted;
 
         public static void merge(int a[], int m, int middle, int n) {
             int i = m;             // 첫 번째 부분집합의 시작 위치 설정
@@ -46,9 +50,36 @@ public class Merge {
             }
         }
         public static void main(String[] args) {
-            int[] list = {20,12,13,11,7,9,2,1};
-            int size = list.length;
-            mergeSort(list, 0, size-1);
-            System.out.println(Arrays.toString(list));
+
+            int [] a;
+            //int size = a.length;
+            String str ="";
+            int temp;
+
+            try{
+                File file = new File("data02.txt");
+                FileReader file_reader = new FileReader(file);
+                int cur = 0;
+                while((cur = file_reader.read()) != -1){
+                    //System.out.print((char)cur);
+                    str += (char)cur;
+                }
+                String[] words = str.split(",");
+                a = new int[words.length];
+                for(int i = 0; i<words.length; i++){
+                    a[i] = Integer.parseInt(words[i]);
+                }
+
+            sorted = new int[a.length];
+            mergeSort(a, 0, a.length-1);
+            System.out.println(Arrays.toString(a));
+
+                file_reader.close();
+            }catch (FileNotFoundException e) {
+                e.getStackTrace();
+            }catch(IOException e){
+                e.getStackTrace();
+            }
         }
 }
+
