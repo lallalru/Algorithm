@@ -1,9 +1,6 @@
 package Week02;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 
 public class Merge {
@@ -72,8 +69,20 @@ public class Merge {
 
             sorted = new int[a.length];
             mergeSort(a, 0, a.length-1);
-            System.out.println(Arrays.toString(a));
 
+            File output = new File("output_Merge.txt");
+
+            try {
+                FileWriter fw = new FileWriter(output);
+                for (int k = 0; k <a.length; k++) {
+                    fw.write(a[k]+" ");
+                }
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            //System.out.println(Arrays.toString(a));
                 file_reader.close();
             }catch (FileNotFoundException e) {
                 e.getStackTrace();
