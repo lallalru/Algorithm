@@ -1,9 +1,6 @@
 package Week02;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Insertion {
     public static void main (String args[]) {
@@ -36,9 +33,21 @@ public class Insertion {
                     }
                 }
             }
-            for (int k = 0; k <a.length; k++) {
-                System.out.print(a[k]+" ");
+            File output = new File("output_Insertion.txt");
+
+            try {
+                FileWriter fw = new FileWriter(output);
+                for (int k = 0; k <a.length; k++) {
+                    fw.write(a[k]+" ");
+                }
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+
+//            for (int k = 0; k <a.length; k++) {
+//                System.out.print(a[k]+" ");
+//            }
             file_reader.close();
         }catch (FileNotFoundException e) {
             e.getStackTrace();
