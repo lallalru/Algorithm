@@ -13,7 +13,7 @@ public class Powering_Number {
             return a;
         else if( n%2==0)
             return pow(a,n/2)* pow(a,n/2);
-        else
+        else 
             return pow(a,(n-1)/2) * pow(a,(n-1)/2) *a;
     }
 }
